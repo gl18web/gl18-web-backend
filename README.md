@@ -1,4 +1,4 @@
-gl18 website backend/n
-choices:/n
-  1.use Java/n
+gl18 website backend
+choices:
+  1.use Java
   2.use Python
