@@ -1,4 +1,1 @@
-gl18 website backend
-choices:
-  1.use Java
-  2.use Python
+桂林市第十八中学网站后端项目
