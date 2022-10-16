@@ -12,15 +12,23 @@ repositories {
     maven {
         url "https://maven.aliyun.com/nexus/content/groups/public"
     }
+
+}
+configurations {
+    mybatisGenerator
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    //implementation 'org.springframework.boot:spring-boot-starter-jdbc'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     runtimeOnly 'mysql:mysql-connector-java'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'com.alibaba.fastjson2:fastjson2-extension:2.0.15'
+    implementation 'org.yaml:snakeyaml:1.17'
+    mybatisGenerator 'mysql:mysql-connector-java:5.1.40'
 }
 
 tasks.named('test') {
     useJUnitPlatform()
 }
+

@@ -8,8 +8,12 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 @SpringBootApplication(exclude= {DataSourceAutoConfiguration.class})
 public class Gl18WebBackendApplication {
 
+    public static DBConfigReader dbConfigReader;
+
     public static void main(String[] args) {
-        SpringApplication.run(Gl18WebBackendApplication.class, args);
+        dbConfigReader = new DBConfigReader();
+        SpringApplication.run(Gl18WebBackendApplication.class, args
+        );
     }
 
 }
