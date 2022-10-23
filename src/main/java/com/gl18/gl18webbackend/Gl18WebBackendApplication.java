@@ -10,7 +10,8 @@ public class Gl18WebBackendApplication {
 
     public static DBConfigReader dbConfigReader;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ClassNotFoundException {
+        Class.forName("com.mysql.jdbc.Driver");
         dbConfigReader = new DBConfigReader();
         SpringApplication.run(Gl18WebBackendApplication.class, args
         );

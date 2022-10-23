@@ -1,0 +1,38 @@
+<html lang="zh-cn">
+<meta charset="UTF-8">
+<head>
+    <title>reCAPTCHA demo</title>
+    <script src="https://www.recaptcha.net/recaptcha/api.js" async="" defer=""></script>
+</head>
+<body>
+<form action="?" method="POST">
+    <div class="g-recaptcha" data-callback="robotVerified" data-sitekey="6Le4NIwiAAAAAKNu47aJH4j9ojMo2HCBT6RFL0JT"></div>
+    <div>
+        <p> 请先进行人机检验！ </p>
+    </div>
+    <div>
+        <p id="recaptcha">  </p>
+    </div>
+</form>
+<script>
+    function robotVerified(a){
+        const http = new XMLHttpRequest();
+        const url = "http://localhost:8080/api/recaptcha/check?token=" + a;
+        http.open("GET",url)
+        http.send()
+        http.onreadystatechange=function () {
+            if(this.readyState === 4 && this.status === 200){
+                obj = JSON.parse(http.responseText)
+                if (obj.success === true){
+                    document.getElementById("recaptcha").innerHTML = "验证通过！"
+                }else {
+                    document.getElementById("recaptcha").innerHTML = "验证不通过！"
+                }
+
+            }
+        }
+
+    }
+</script>
+</body>
+</html>

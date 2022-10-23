@@ -17,6 +17,8 @@ public class DBConfigReader {
     public String dbpasswd = null;
     public String dbname = null;
 
+    public String recaptcha_key = null;
+
 
     @SuppressWarnings("ResultOfMethodCallIgnored")
     public DBConfigReader(){
@@ -26,14 +28,16 @@ public class DBConfigReader {
             File file = new File(fileName);
             File folderFile = new File(folder);
             if (!file.exists() || !folderFile.exists()){
-                String content = "#要连接的Mysql地址\n" +
+                String content = "#Mysql Host\n" +
                         "dbhost: \"localhost\"\n" +
-                        "#MySQL用户名\n" +
+                        "#MySQL Username\n" +
                         "dbusername: \"root\"\n" +
-                        "#MySQL密码\n" +
+                        "#MySQL Password\n" +
                         "dbpasswd: \"\"\n" +
-                        "#数据库名\n" +
-                        "dbname: \"database\"";
+                        "#Database name\n" +
+                        "dbname: \"database\"\n" +
+                        "#RECAPTCHA private key\n" +
+                        "recaptcha_key: \"your_key_here\"";
                 folderFile.mkdirs();
                 file.createNewFile();
                 FileWriter fileWritter = new FileWriter(fileName,true);
@@ -49,6 +53,8 @@ public class DBConfigReader {
             this.dbusername = (String) map.get("dbusername");
             this.dbpasswd = (String) map.get("dbpasswd");
             this.dbname = (String) map.get("dbname");
+            this.recaptcha_key = (String) map.get("recaptcha_key");
+
         } catch (IOException e){
             e.printStackTrace();
         }
